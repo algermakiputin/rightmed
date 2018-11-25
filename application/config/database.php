@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'medtech',
+	'hostname' => 'us-cdbr-iron-east-01.cleardb.net',
+	'username' => 'bc80acadab5f09',
+	'password' => '2b4538af',
+	'database' => 'heroku_0d774484ec697f1',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
