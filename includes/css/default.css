@@ -1,0 +1,106 @@
+.nav {
+    font-size: 22px;
+    border-bottom: 2px solid #333;
+}
+
+.nav .nav-link {
+    padding: 10px;
+}
+
+.main-sec {
+    margin-top: 20px;
+    background-color: #fff;
+    padding: 20px;
+}
+
+table, #user {
+    margin-top: 25px;
+}
+
+.side {
+    margin: 0 10px;
+}
+
+h2 {
+    padding: 5px;
+}
+
+#login-form {
+    width: 300px;
+    margin: 0 auto;
+    padding: 10px 30px;
+}
+
+#reserve-sec {
+    padding: 20px 100px;
+}
+
+#resproc {
+    margin-top: 20px;
+}
+
+.line-top {
+    margin-top: 32px;
+}
+
+#specify, #special1, #special2, form#museum, form#pool {
+    display: none;
+}
+
+#spec-event-type {
+    cursor: default;
+}
+
+input[type=number] {
+    width: 70px;
+}
+
+legend {
+    font-size: 1rem;
+}
+
+.status {
+    display: inline-block;
+    width: 20px;
+}
+
+#options {
+    width: 110px;
+}
+
+.check {
+    width: 120px;
+}
+
+
+#reservations td:first-of-type {
+    width: 120px;
+}
+
+#reservations td:nth-of-type(2) {
+    width: 200px;
+}
+
+#login-btn {
+	background-color: #2f88fd;
+	color: #fff;
+}
+
+#login-btn:hover {
+	background-color: #a6a6a6;
+	color: #fff;
+}
+
+#patient_info {
+
+    padding-left: 100px;
+
+}
+
+.btm-margin {
+    margin-bottom: 20px;
+}
+
+.color1 {
+    background-color: #ffcdcd !important;
+}
