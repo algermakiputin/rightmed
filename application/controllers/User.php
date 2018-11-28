@@ -57,7 +57,6 @@ class User extends MY_Controller {
             $this->session->set_userdata('userid', $userid);
             $this->session->set_userdata('username', $username);
             $this->session->set_userdata('usertype', $usertype);
-
             redirect(base_url() . $usertype);
 
         }
@@ -83,6 +82,11 @@ class User extends MY_Controller {
         $this->gender = $this->input->post("gender");
         $this->marital_status = $this->input->post("marital_status");
 
+    }
+
+    public function logout() {
+        $this->session->sess_destroy();
+        redirect('/');
     }
     
     public function register_check() {

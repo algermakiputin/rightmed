@@ -111,13 +111,18 @@
                                 <div class="form-group">
                                     <label for="patient">Patient</label>
                                     <select id="patient" name="patient" class="form-control">
-                                        
+                                        <?php foreach($patients as $patient): ?>
+                                        <option value="<?php echo $patient->id ?>">
+                                            <?php echo $patient->fname . ' ' . $patient->mname ?>
+                                        </option>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
                                 <div class="form-group" id="doctorgrp">
                                     <label for="doctor">Doctor</label>
-                                    <select id="doctor" name="doctor" class="form-control">
+                                    <select id="doctor-select" name="doctor" class="form-control">
                                         <?php if (empty($doctors)) echo '<option>Add a new doctor in Users</option>' ?>
+                                        <option value="">Select Doctor</option>
                                         <?php foreach ($doctors as $doctor): ?>
                                             <option value='<?php echo $doctor->id ?>'><?php echo ucfirst($doctor->lname) . ', ' . ucfirst($doctor->fname) . ' ' . ucfirst($doctor->mname)?></option>
                                         <?php endforeach; ?>
@@ -125,21 +130,14 @@
                                 </div>
                                 <div class="form-group">
                                     <div id='schedule-info' class="radio">
-                                        <?php if (empty($schedules)) echo '<p class="text-danger">Current doctor selected currently has no available schedules.</p>' ?>
-
-                                        <?php foreach ($schedules as $schedule): ?>
-                                            
-                                            <label><input id='schedule' type="radio" name="schedule" value="<?php echo $schedule->id ?>" />
-                                                <?php 
-                                                    echo $schedule->date . ' ' . 
-                                                    date('h:i a', strtotime($schedule->start)) . ' ' .
-                                                    date('h:i a', strtotime($schedule->end));
-                                                ?>
-                                            </label>
-
-                                        <?php endforeach; ?>
-
+                                        <div class="row">
+                                             
+                                        </div>
+                                        <input type="hidden" name="schedule" id="schedule_time">
+                                        <div class="clearfix"></div>
                                     </div>
+
+
                                 </div>
 
                                 <div class="form-group" id="doctorgrp">
@@ -255,17 +253,7 @@
                 "'s scheduled appointment to Dr. " + jQuery("tr:eq(" + jQuery(this).data('row') +") td:eq(1)").html() +
                 " on " + jQuery("tr:eq(" + jQuery(this).data('row') +") td:eq(2)").html() + "?");
         });
-
-        jQuery('#doctor').change( function() {
-            var jqxhr = jQuery.ajax( "load_appointments?doctor_id=" + jQuery(this).val() )
-            .done(function( msg ) {
-                if (msg != '')
-                    jQuery('#schedule-info').html(msg);
-                else {
-                    jQuery('#schedule-info').html('<p class="text-danger">Current doctor selected currently has no available schedules.</p>');
-                }
-            })
-        });
+    
 
         jQuery(".patientinfo").click(function() {
 

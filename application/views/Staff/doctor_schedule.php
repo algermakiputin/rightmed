@@ -35,45 +35,31 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php 
-                            $inc = 1;
-                            foreach ($doctors as $doctor): 
-                        ?>
+                        <?php $inc =0; ?>
+                        <?php foreach($schedules as $key => $schedule): ?>
                         <tr>
                             <td>
-                          <?php echo  ucfirst($doctor->lname) . ', ' . ucfirst($doctor->fname) . ' ' . ucfirst($doctor->mname) ?></td>
+                          <?php echo  ucfirst($schedule['lname']) . ', ' . ucfirst($schedule['fname']) . ' ' . ucfirst($schedule['mname']) ?></td>
                             <td>
-                                <?php 
-                                    if (!empty($schedules[$inc-1])) {
-                                        $num = 1;
-                                        foreach ($schedules[$inc-1] as $schedule): 
-                                ?>
-
-                                            <p>
-                                                <div id='sched<?php echo $num ?>';>
-                                                    <?php echo $schedule->date ?>
-                                                    <?php echo date('h:i a', strtotime($schedule->start)) ?>
-                                                    - <?php echo date('h:i a', strtotime($schedule->end)) ?>
-                                                </div>
-                                                <div class="d-none" id="sched_id<?php echo $num ?>"><?php echo $schedule->id ?></div>
-                                                
-                                                <a class="edit" href="#" data-row="<?php echo $inc ?>" data-num="<?php echo $num ?>" data-id="<?php echo $schedule->id ?>" data-id="<?php echo $schedule->id ?>" data-date='<?php echo $schedule->date ?>' data-start='<?php echo $schedule->start ?>' data-end='<?php echo $schedule->end ?>' data-toggle="modal" data-target="#addeditmodal"> 
-                                                    <i class="menu-icon fa fa-edit"></i> Edit 
-                                                </a>
-                                            </p>
-                            
-                                <?php       $num++;
-                                        endforeach;
-                                    }
-                                ?>
-
+                                    
+                                    <p>
+                                        <div id='sched<?php echo $key; $inc = $key ?>';>
+                                            <?php echo $schedule['date'] ?>
+                                            <?php echo ($schedule['start']) ? $schedule['start'] . ' - '  :'' ?>
+                                            <?php echo ($schedule['end']) ?>
+                                        </div>
+                                        <div class="d-none" id="sched_id<?php echo $key ?>"><?php echo $schedule['id'] ?></div>
+                                        <?php if ($schedule['date']): ?>
+                                        <a class="edit" href="#" data-row="<?php echo $key ?>" data-num="<?php echo $key ?>" data-id="<?php echo $schedule['id'] ?>" data-id="<?php echo $schedule['id'] ?>" data-date='<?php echo $schedule['date'] ?>' data-start='<?php echo $schedule['start'] ?>' data-end='<?php echo $schedule['end'] ?>' data-toggle="modal" data-target="#addeditmodal"> 
+                                            <i class="menu-icon fa fa-edit"></i> Edit 
+                                        </a>
+                                        <?php endif; ?>
+                                    </p>
+                                
                             </td>
-                            <td class="d-none"><?php echo $doctor->id ?></td>
+                            <td class="d-none"><?php echo $schedule['id'] ?></td>
                         </tr>
-                        <?php 
-                            $inc++;
-                            endforeach; 
-                        ?>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
 

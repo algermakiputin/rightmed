@@ -13,11 +13,13 @@ class Patient extends MY_Controller {
 
     }
 
+   
+
     public function index() {
         
-        $this->data['doctors'] = $this->stf->select_users('Doctor');
-        $this->data['patients'] = $this->stf->select_users('Patient', 'tblpatient');
-        $this->data['schedules'] = $this->stf->select_doctor_schedules($this->data['doctors'][0]->id, true);
+        // $this->data['doctors'] = $this->stf->select_users('Doctor');
+        // $this->data['patients'] = $this->stf->select_users('Patient', 'tblpatient');
+        // $this->data['schedules'] = $this->stf->select_doctor_schedules($this->data['doctors'][0]->id, true);
 
         $patient_id = $this->stf->select_users('', 'tblpatient', '', $this->session->userid)[0]->id;
         $this->data['appointments'] = $this->stf->select_appointments('', '<> "Cancelled" AND state <> "Declined" AND state <> "Archived"', '', $patient_id);

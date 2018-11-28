@@ -23,7 +23,7 @@ date_default_timezone_set("Asia/Manila");
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'https://rightmed.herokuapp.com/';
+$config['base_url'] = 'http://localhost/medtech';
 
 /*
 |--------------------------------------------------------------------------
@@ -136,7 +136,7 @@ $config['subclass_prefix'] = 'MY_';
 | Note: This will NOT disable or override the CodeIgniter-specific
 |	autoloading (application/config/autoload.php)
 */
-$config['composer_autoload'] = FALSE;
+$config['composer_autoload'] = FCPATH.'/vendor/autoload.php';
 
 /*
 |--------------------------------------------------------------------------

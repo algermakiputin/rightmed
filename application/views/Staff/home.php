@@ -101,6 +101,10 @@
                                     <input type="password" class="form-control" id="passw" name="passw" placeholder="Enter the password of the new user">
                                 </div>
                                 <div class="form-group">
+                                    <label for="passw">Confirm Password</label>
+                                    <input type="password" class="form-control" id="confirm_passw" name="confirm_passw" placeholder="Confirm Password">
+                                </div>
+                                <div class="form-group">
                                     <label for="usertype">Type of User</label>
                                     <select id="usertype" name="usertype" class="form-control">
                                         <option selected>Doctor</option>

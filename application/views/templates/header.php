@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="<?php echo base_url() ?>includes/others/style.css">
 
     <link rel="stylesheet" href="<?php echo base_url() ?>includes/others/css/responsive.css">
-    
+    <meta name="base_url" content="<?php echo base_url() ?>">
     </style>
 </head>
 
@@ -27,37 +27,7 @@
 
     <!-- ***** Header Area Start ***** -->
     <header class="header-area">
-        <!-- Top Header Area -->
-        <div class="top-header-area gradient-background">
-            <div class="container h-100">
-                <div class="row h-100">
-                    <div class="col-12 h-100">
-                        <!-- <div class="h-100 d-md-flex justify-content-between align-items-center">
-                            <div class="top-header-social-info">
-                                <a href="<?php echo base_url() ?>includes/others/#" data-toggle="tooltip" data-placement="left" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                                <a href="<?php echo base_url() ?>includes/others/#" data-toggle="tooltip" data-placement="left" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="<?php echo base_url() ?>includes/others/#" data-toggle="tooltip" data-placement="left" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                <a href="<?php echo base_url() ?>includes/others/#" data-toggle="tooltip" data-placement="left" title="Dribbble"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
-                                <a href="<?php echo base_url() ?>includes/others/#" data-toggle="tooltip" data-placement="left" title="Behance"><i class="fa fa-behance" aria-hidden="true"></i></a>
-                                <a href="<?php echo base_url() ?>includes/others/#" data-toggle="tooltip" data-placement="left" title="Linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                            </div>
-                            <div class="top-header-menu">
-                                <nav class="top-menu">
-                                    <ul>
-                                        <li><a href="<?php echo base_url() ?>includes/others/#">FAQ</a></li>
-                                        <li><a href="<?php echo base_url() ?>includes/others/#">Book</a></li>
-                                        <li><a href="<?php echo base_url() ?>includes/others/#">Appointment</a></li>
-                                        <li><a href="<?php echo base_url() ?>includes/others/#">Contacts</a></li>
-                                        <li><a href="<?php echo base_url() ?>includes/others/#">contact@business.com</a></li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-						-->
-                    </div>
-                </div>
-            </div>
-        </div>
+         
         <!-- Main Header Area -->
         <div class="main-header-area" id="stickyHeader">
             <div class="container h-100">
@@ -74,13 +44,13 @@
                                     <!-- Menu Area -->
                                     <ul class="navbar-nav ml-auto">
                                         <li class="nav-item <?php echo $home ?>">
-                                            <a class="nav-link" href="<?php echo base_url() ?>">Home</a>
+                                            <a class="nav-link" href="#home">Home</a>
                                         </li>
                                         <li class="nav-item <?php echo $login ?>">
-                                            <a class="nav-link" href="<?php echo base_url() ?>login">Log In</a>
+                                            <a class="nav-link" href="#contact-us">Contact Us</a>
                                         </li>
                                         <li class="nav-item <?php echo $register ?>">
-                                            <a class="nav-link" href="<?php echo base_url() ?>register">Register</a>
+                                            <a class="nav-link" href="#services">Services</a>
                                         </li>
                                     </ul>
                                 </div>

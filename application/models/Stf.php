@@ -14,7 +14,7 @@ class Stf extends CI_model {
         $this->db->where('id', $user_id);
         $query = $this->db->get($table);
 
-        return $query->row(0)->account_id;
+        return $query->row()->account_id;
     }
 
     function select_person_id($user_id, $table='tbluser') {
@@ -22,7 +22,7 @@ class Stf extends CI_model {
         $this->db->where('id', $user_id);
         $query = $this->db->get($table);
 
-        return $query->row(0)->person_id;
+        return $query->row()->person_id;
     }
 
     function select_checkup_id($patient_id) {
@@ -30,7 +30,7 @@ class Stf extends CI_model {
         $this->db->where('id', $patient_id);
         $query = $this->db->get('tblpatient');
 
-        return $query->row(0)->checkup_id;
+        return $query->row()->checkup_id;
     }
 
     function select_users($usertype='', $table='tbluser', $id='', $account_id='', $search = '') {
@@ -222,7 +222,6 @@ class Stf extends CI_model {
     function delete_patient($id) {
 
         $this->db->trans_start();
-        
         $this->db->delete('tblaccount', array('id' => $this->select_account_id($id, 'tblpatient')));
         $this->db->delete('tblperson', array('id' => $this->select_person_id($id, 'tblpatient')));
         $this->db->delete('tblpatient', array('id' => $this->select_account_id($id, 'tblpatient')));
