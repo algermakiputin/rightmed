@@ -61,7 +61,9 @@
 
             </tbody>
         </table>
- 
+        <div id="user" class="d-flex justify-content-center">
+        <a class="add btn btn-primary" href="#"  data-toggle="modal" data-target="#addeditmodal"> Add new Patient</a>
+        </div>
     </section>
 </div> <!-- .content -->
 </div>
