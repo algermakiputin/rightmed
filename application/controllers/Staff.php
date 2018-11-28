@@ -347,6 +347,7 @@ class Staff extends MY_Controller {
         $start = $this->input->post('start');
         $end = $this->input->post('end');
         
+
         $scheduleExist = $this->db->where('user_id', $doctor_id)
                                     ->where('date', $date)
                                     ->delete('tblschedule');
@@ -368,8 +369,11 @@ class Staff extends MY_Controller {
             ];
      
         }
+
+        if ($datasets)
+            $this->db->insert_batch('tblschedule', $datasets);
         
-        $this->db->insert_batch('tblschedule', $datasets);
+        
         redirect(base_url() . $this->data['user'] . '/doctor_schedule');
     }
 
