@@ -77,10 +77,10 @@
 }
 
     .form-login {
-    	position: absolute;right: 50px;top: 50px;width: 100%;height: auto;z-index: 9999;
-    
-    	background: #fff;
-    	padding: 20px;
+    	position: absolute;right: 50px;top: 38%;width: 100%;height: auto;z-index: 9999;
+        transform: translate(0,-50%);
+        background: #fff;
+        padding: 20px;
     }
 
     .hero-slides {
