@@ -20,6 +20,18 @@ class User extends MY_Controller {
 
     }
 
+    public function services() {
+        $this->load->view('templates/header');
+        $this->load->view('services');
+        $this->load->view('templates/footer');
+    }
+
+    public function mission_vision() {
+        $this->load->view('templates/header');
+        $this->load->view('about');
+        $this->load->view('templates/footer');
+    }
+
     public function login() {
 
 		$this->data['home'] = '';

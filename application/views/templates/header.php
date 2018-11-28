@@ -43,14 +43,14 @@
                                 <div class="collapse navbar-collapse" id="medicaMenu">
                                     <!-- Menu Area -->
                                     <ul class="navbar-nav ml-auto">
-                                        <li class="nav-item <?php echo $home ?>">
-                                            <a class="nav-link" href="#home">Home</a>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="<?php echo base_url('/') ?>">Home</a>
                                         </li>
-                                        <li class="nav-item <?php echo $login ?>">
-                                            <a class="nav-link" href="#contact-us">Contact Us</a>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="<?php echo base_url('mission_vision') ?>">Mission & Vision</a>
                                         </li>
-                                        <li class="nav-item <?php echo $register ?>">
-                                            <a class="nav-link" href="#services">Services</a>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="<?php echo base_url('services') ?>">Services</a>
                                         </li>
                                     </ul>
                                 </div>

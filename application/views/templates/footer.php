@@ -1,57 +1,8 @@
 
     <!-- ***** Footer Area Start ***** -->
-    <footer class="footer-area" id="contact-us">
-        <!-- Main Footer Area -->
-        <div class="main-footer-area section_padding_100 bg-default">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 footer-widget-area">
-                        <div class="widget-title">
-                                <h6>Opening Time</h6>
-                        </div>
-                        <div class="widget-single-contact d-flex align-items-center">
-                            <div class="widget-contact-thumbnail mr-15">
-                                <img src="<?php echo base_url() ?>includes/others/img/icons/alarm-clock.png" alt="">
-                            </div>
-                            <div class="widget-contact-info">
-                                <p>Monday - Friday 08:00 - 21:00 <br>Saturday &amp; Sunday - CLOSED</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 footer-widget-area">
-                        <div class="widget-title">
-                                <h6>Address</h6>
-                            </div>
-                        <div class="widget-single-contact d-flex align-items-center">
-                            <div class="widget-contact-thumbnail mr-15">
-                                <img src="<?php echo base_url() ?>includes/others/img/icons/map-pin.png" alt="">
-                            </div>
-                            <div class="widget-contact-info">
-                                <p>123 Street, City<br>Country</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 footer-widget-area">
-                        <div class="widget-title">
-                                <h6>Contact</h6>
-                            </div>
-                        <div class="widget-single-contact d-flex align-items-center">
-                            <div class="widget-contact-thumbnail mr-15">
-                                <img src="<?php echo base_url() ?>includes/others/img/icons/envelope.png" alt="">
-                            </div>
-                            <div class="widget-contact-info">
-                                <p>09123456789 <br>contact@business.com</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-        <div>
-            <p class="text-center" style="margin: 0;padding: 20px;">&copy; 2018 All Rights Reserved</p>
-        </div>
-    </footer>
+   <!--  <div>
+        <p class="text-center" style="margin: 0;padding: 20px;">&copy; 2018 All Rights Reserved</p>
+    </div> -->
     <!-- ***** Footer Area End ***** -->
 
     <!-- jQuery (Necessary for All JavaScript Plugins) -->
@@ -72,6 +23,14 @@
                 var currentAge = moment().diff(bdate, 'years');
                 $("#age").val(currentAge);
             })
+
+            var height = $(document).height();
+            var width = $(document).width();
+
+            if (width > 980) {
+                height = height - 100;
+                $(".single-hero-slide").css('height' , height + 'px');
+            }
         })
     </script>
 </body>
