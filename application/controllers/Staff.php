@@ -341,12 +341,18 @@ class Staff extends MY_Controller {
     }
 
     public function add_schedule() {
-       
+        
         $doctor_id = $this->input->post('doctor');
         $date = $this->input->post('date');
         $start = $this->input->post('start');
         $end = $this->input->post('end');
-         
+        
+        $scheduleExist = $this->db->where('user_id', $doctor_id)
+                                    ->where('date', $date)
+                                    ->delete('tblschedule');
+                                
+
+
         $start = Carbon\Carbon::parse($start);
         $end = Carbon\Carbon::parse($end);
         $datasets = [];
