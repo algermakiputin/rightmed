@@ -61,7 +61,8 @@
     				<div class="row h-100 align-items-center">
     					<div class="col-12">
     						<div class="hero-slides-content">
-    							<h3 data-animation="fadeInUp" data-delay="100ms"><b>Medical Laboratory Clinic </b></h3>
+    							<h2 data-animation="fadeInUp" data-delay="100ms"><b>R. E. D.</b></h2>
+    							<h5 data-animation="fadeInUp" data-delay="400ms">Manage Clients and Appointments</h5>
     						 
     							<div class="slide-btn-group mt-50" data-animation="fadeInUp" data-delay="700ms">
     								<a href="http://localhost/project2/login" class="btn medica-btn">Log In</a>

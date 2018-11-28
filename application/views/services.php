@@ -93,3 +93,6 @@
         </div>
         
     </footer>
+       <div>
+        <p class="text-center" style="margin: 0;padding: 20px;">&copy; 2018 All Rights Reserved</p>
+    </div>
