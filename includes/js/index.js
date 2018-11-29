@@ -1,6 +1,27 @@
 jQuery(document).ready(function($) {
 	var base_url = $("meta[name='base_url']").attr('content');
-	 
+	
+	$("#schedules").on('click', '.edit', function(){
+		var id = $(this).data('id');
+		$("#addeditmodal").modal('toggle');
+		$("#addeditmodal .modal-title").html("Editting a doctor's schedule");
+          $("#addedit_schedule").attr("action", "edit_schedule");
+		$.ajax({
+			type : 'POST',
+			data : {
+				id : id
+			}, 
+			url : base_url + 'Staff/getScheduleDetails',
+			success : function(data) {
+				var result = JSON.parse(data);
+				$("#date").val(result.date);
+				$("#start").val(result.start);
+				$("#end").val(result.end);
+				$("#id").val(result.id);
+				$("#doctor").val(result.user_id);
+			}
+		})
+	});
 	$("[name='birthdate']").change(function() {
 	     var bdate = moment($(this).val());
 	     var currentAge = moment().diff(bdate, 'years');
@@ -26,15 +47,15 @@ jQuery(document).ready(function($) {
 
 					$.each(result, function(key, value) {
 						$("#schedule-info .row").prepend(
-							'<div class="col-md-4 text-center" style="padding-right:0">' +
+							'<div class="col-md-12 text-center" style="padding-right:0">' +
 								'<div class="schedule-box" data-id="'+value.id+'">' +
-								'<span class="time">'+value.start+' - '+value.end+'</span>' +
-								'</div>' +
+								'<i class="fa fa-clock-o"></i> <span class="time">'+value.date + ' ' +value.start+' - '+value.end+'</span>' +
+								' Slots Remaining '+value.available+'</div>' +
 								'</div>'
 							);
 	            
 					});
-					$("#schedule-info .row").prepend('<div class="col-md-12"><label>Available Time Slots</label></div>');
+					$("#schedule-info .row").prepend('<div class="col-md-12"><label>Doctor Schedule</label></div>');
 				}else {
 					$("#schedule-info .row").html('<div class="col-md-12"><p class="text-info">The Doctor is not available at this time</p></div>');
 				}

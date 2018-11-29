@@ -291,43 +291,45 @@ class Staff extends MY_Controller {
 
     }
 
+    public function getScheduleDetails() {
+        $id = $this->input->post('id');
+        $schedule = $this->db->where('id', $id)->get('tblschedule')->row();
+
+        echo json_encode($schedule);
+    }
+
     public function doctor_schedule() {
 
         $this->data['doctors'] = $this->stf->select_users('Doctor');
 
-        $schedules = [];
+        $datasets = [];
 
         $inc = 0;
         foreach ($this->data['doctors'] as $doctor) {
-           
-            $min = $this->db->select_min('id')
-                                ->where('user_id', $doctor->id)
-                                ->where('DATE_FORMAT(date, "%Y-%m-%d") = ', date('Y-m-') . ((int)date('d') + 1))
-                                ->get('tblschedule')
-                                ->row();
-            $max = $this->db->select_max('id')
-                                ->where('user_id', $doctor->id)
-                                ->where('DATE_FORMAT(date, "%Y-%m-%d") = ', date('Y-m-') . ((int)date('d') + 1))
-                                ->get('tblschedule')
-                                ->row();
+            
+            $schedules = $this->db->where('date >=', date('Y-m-d'))
+                            ->where('user_id', $doctor->id)
+                            ->order_by('id', 'DESC')
+                            ->get('tblschedule')
+                            ->result();
+            
+            if ($schedules) {
+                foreach($schedules as $schedule) {
+                    $datasets[$doctor->fname . ' ' . $doctor->lname][] = [
+                            'id' => $schedule->id,
+                            'date' => $schedule->date . ' ' . date('h:ia',strtotime($schedule->start)) . ' - ' . date('h:ia',strtotime($schedule->end)),
 
-            $start = $this->db->where('id', $min->id)->get('tblschedule')->row();
-            $end = $this->db->where('id', $max->id)->get('tblschedule')->row();
- 
-            $schedules[] = [
-                    'fname' => $doctor->fname ?? '',
-                    'lname' => $doctor->lname ?? '',
-                    'mname' => $doctor->mname ?? '',
-                    'id' => $doctor->id ?? '',
-                    'date' =>   $start->date ?? '',
-                    'start' => $start->start ?? '',
-                    'end' => $end->end ?? ''
-                ];
+                        ];
+                }
+            }else {
+                $datasets[$doctor->fname . ' ' . $doctor->lname][] = [];
+            }
             
         }
 
     
-        $this->data['schedules'] = $schedules;
+    
+        $this->data['schedules'] = $datasets;
 
     }
 
@@ -341,7 +343,7 @@ class Staff extends MY_Controller {
     }
 
     public function add_schedule() {
-        
+         
         $doctor_id = $this->input->post('doctor');
         $date = $this->input->post('date');
         $start = $this->input->post('start');
@@ -353,59 +355,36 @@ class Staff extends MY_Controller {
                                     ->delete('tblschedule');
                                 
 
-
-        $start = Carbon\Carbon::parse($start);
-        $end = Carbon\Carbon::parse($end);
-        $datasets = [];
-        for ($i = $start; $i->lessThan($end); $i->addMinutes(20)) {
-            $time = $i;
-
-            $startTime = $time->format('h:i a');
-            $datasets[] = [
+        $data = [
                 'user_id' => $doctor_id,
                 'date' => $date,
-                'start' => $startTime,
-                'end' => Carbon\Carbon::parse($startTime)->addMinutes(20)->format('h:i a')
+                'start' => $start,
+                'end' => $end
             ];
-     
-        }
 
-        if ($datasets)
-            $this->db->insert_batch('tblschedule', $datasets);
+        $this->db->insert('tblschedule', $data);
         
         
         redirect(base_url() . $this->data['user'] . '/doctor_schedule');
     }
 
     public function edit_schedule() {
-       
-
-        $doctor_id = $this->input->post('id');
+      
+        $doctor_id = $this->input->post('doctor');
         $date = $this->input->post('date');
         $start = $this->input->post('start');
         $end = $this->input->post('end');
-
-        $this->db->where('user_id', $doctor_id)
-                    ->where('date', $date)
-                    ->delete('tblschedule');
+ 
          
-        $start = Carbon\Carbon::parse($start);
-        $end = Carbon\Carbon::parse($end);
-        $datasets = [];
-        for ($i = $start; $i->lessThan($end); $i->addMinutes(20)) {
-            $time = $i;
-
-            $startTime = $time->format('h:i a');
-            $datasets[] = [
-                'user_id' => $doctor_id,
-                'date' => $date,
-                'start' => $startTime,
-                'end' => Carbon\Carbon::parse($startTime)->addMinutes(20)->format('h:i a')
-            ];
-     
-        }
+        $data = [
+            'date' => $date,
+            'start' => $start,
+            'end' => $end
+        ];
         
-        $this->db->insert_batch('tblschedule', $datasets);
+        $this->db->where('id', $this->input->post('id'))
+                    ->where('user_id', $doctor_id)
+                    ->update('tblschedule', $data);
 
         redirect(base_url() . $this->data['user'] . '/doctor_schedule');
 
@@ -434,44 +413,38 @@ class Staff extends MY_Controller {
 
     public function getDoctorSchedule() {
         $date = date('Y-m-d');
-        $appointments = $this->db->select("schedule_id")
-                                ->from('tblappointment')
-                                ->where('doctor_id', $this->input->post('id'))
-                                ->where('DATE_FORMAT(tblappointment.created_at, "%Y-%m-%d") =', $date)
-                                ->get()
-                                ->result();
+        
 
         $datasets = [];
      
-        $schedule = $this->db->where('date', $date)
+        $schedule = $this->db->where('date >=', $date)
                             ->where('user_id', $this->input->post('id'))
-          
                             ->order_by('id', 'DESC')
                             ->get('tblschedule')
                             ->result();
-        $currentTime = Carbon\Carbon::parse(Date('h:i a'));
-
-        foreach($schedule as $key => $sched) {
-
-            if ($currentTime->gt(Carbon\Carbon::parse($sched->start))) {
-                unset($schedule[$key]);
-                continue;
-            }
-            if (count($appointments)) {
-
-                foreach($appointments as $appointment) {
-                    if ($appointment->schedule_id == $sched->id) {
-                        unset($schedule[$key]);
-                        continue;
-                    } 
-
-                }
-            }
-            continue;
-            
         
+        $datasets = [];
+
+        foreach($schedule as $sched) {
+            $appointments = $this->db->where('doctor_id', $this->input->post('id'))
+                                ->where('DATE_FORMAT(created_at, "%Y-%m-%d") =', $date)
+                                ->get('tblappointment')
+                                ->num_rows();
+
+            $start = Carbon\Carbon::parse($sched->start);
+            $end = Carbon\Carbon::parse($sched->end);
+            $diff = $start->diffInMinutes($end);
+            $datasets[] = [
+                    'available' => ($diff / 20) - $appointments,
+                    'date' => $sched->date,
+                    'start' => $start->format(' h:ia'),
+                    'end' => $end->format(' h:ia'),
+                    'id' => $sched->id
+
+                ];
         }
-        echo json_encode($schedule);
+ 
+        echo json_encode($datasets);
     }
 
     public function get_appointment_input() {

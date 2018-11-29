@@ -27,44 +27,37 @@
                     echo "<p class='text-danger'>Duplicate doctor schedule is invalid. Please enter a new one.</p>";
                 ?>
 
-                <table id="classes" class="table table-striped">
+                <table id="classes" class="table table-striped doctor-schedule-table">
                     <thead>
                         <tr>
-                            <th>Doctor</th>
-                            <th>Schedule List</th>
+                            <th width="40%">Doctor</th>
+                            <th width="60%">Schedule List</th>
+
                         </tr>
+
                     </thead>
-                    <tbody>
-                        <?php $inc =0; ?>
+                    <tbody id="schedules">
                         <?php foreach($schedules as $key => $schedule): ?>
-                        <tr>
-                            <td>
-                          <?php echo  ucfirst($schedule['lname']) . ', ' . ucfirst($schedule['fname']) . ' ' . ucfirst($schedule['mname']) ?></td>
-                            <td>
+                            <tr>
+                                <td><?php echo $key ?></td>
+                                <td>
                                     
-                                    <p>
-                                        <div id='sched<?php echo $key; $inc = $key ?>';>
-                                            <?php echo $schedule['date'] ?>
-                                            <?php echo ($schedule['start']) ? $schedule['start'] . ' - '  :'' ?>
-                                            <?php echo ($schedule['end']) ?>
-                                        </div>
-                                        <div class="d-none" id="sched_id<?php echo $key ?>"><?php echo $schedule['id'] ?></div>
-                                        <?php if ($schedule['date']): ?>
-                                        <a class="edit" href="#" data-row="<?php echo $key ?>" data-num="<?php echo $key ?>" data-id="<?php echo $schedule['id'] ?>" data-id="<?php echo $schedule['id'] ?>" data-date='<?php echo $schedule['date'] ?>' data-start='<?php echo $schedule['start'] ?>' data-end='<?php echo $schedule['end'] ?>' data-toggle="modal" data-target="#addeditmodal"> 
-                                            <i class="menu-icon fa fa-edit"></i> Edit 
-                                        </a>
-                                        <?php endif; ?>
-                                    </p>
-                                
-                            </td>
-                            <td class="d-none"><?php echo $schedule['id'] ?></td>
-                        </tr>
+                                    <?php if ($schedule): ?>
+                                        <?php foreach($schedule as $sched): ?>
+                                                <?php if ($sched): ?>
+                                                <div><?php echo ($sched['date']) ?? '' ?><button data-id="<?php echo $sched['id'] ?>" class="btn btn-link edit"><i class="fa fa-edit"></i>Edit</button></div> 
+                                                <?php endif; ?>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                    
+                                </td>
+                            </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
 
                 <div id="user" class="d-flex justify-content-center">
-                <a class="add btn btn-primary" href="#" data-row="<?php echo $inc ?>" data-toggle="modal" data-target="#addeditmodal"> Add new schedule</a>
+                <a class="add btn btn-primary" href="#" data-row="" data-toggle="modal" data-target="#addeditmodal"> Add new schedule</a>
                 </div>
             </section>
         </div> <!-- .content -->
