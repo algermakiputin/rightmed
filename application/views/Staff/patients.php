@@ -35,7 +35,7 @@
           <div class="col-md-8 text-center middle-toolbar">
             <button class="btn btn-default btn-sm btn-custom" data-toggle="modal" data-target="#agerange">Filter by Age</button>
             <button class="btn btn-default btn-sm btn-custom" data-toggle="modal" data-target="#addressfilter">Filter by Address</button>
-            <button class="btn btn-default btn-sm btn-custom" data-toggle="modal" data-target="#measurementsFilter">Filter by Mesurements</button>
+        
             <button class="btn btn-default btn-sm btn-custom" data-toggle="modal" data-target="#diagnosesFilter">Filter by Diagnoses</button>
 
           </div>

@@ -136,6 +136,7 @@ jQuery(document).ready(function($) {
 	    buttons: [
 	    		{
 	                extend: 'print',
+	                text : '<i class="fa fa-print"></i> Print',
 	                title : 'Patients Records',
 	                customize: function ( win ) {
 	                    $(win.document.body).find( 'table' )

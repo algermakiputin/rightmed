@@ -22,13 +22,7 @@
                 $("#age").val(currentAge);
             })
 
-            var height = $(document).height();
-            var width = $(document).width();
-
-            if (width > 980) {
-                height = height - 100;
-                $(".single-hero-slide").css('height' , height + 'px');
-            }
+           
         })
     </script>
 </body>

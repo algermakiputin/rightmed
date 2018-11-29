@@ -4,7 +4,7 @@
     	<div class="hero-slides owl-carousel">
     		<!-- Single Hero Slide -->
 
-    		<div class="single-hero-slide bg-img" style="background-image: url(<?php echo base_url() ?>includes/others/img/bg-img/hero1.jpg);">
+    		<div class="single-hero-slide height-600 bg-img" style="background-image: url(<?php echo base_url() ?>includes/others/img/bg-img/hero1.jpg);">
     			<div class="container h-100">
     				<div class="row h-100 align-items-center">
     					<div class="col-12">
@@ -22,7 +22,7 @@
     				</div>
     			</div>
     		</div>
-    		<div class="single-hero-slide bg-img" style="background-image: url(<?php echo base_url() ?>includes/others/img/bg-img/hero1.jpg);">
+    		<div class="single-hero-slide height-600 bg-img" style="background-image: url(<?php echo base_url() ?>includes/others/img/bg-img/hero1.jpg);">
     			<div class="container h-100">
     				<div class="row h-100 align-items-center">
     					<div class="col-12">
@@ -39,7 +39,7 @@
     			</div>
     		</div>
     		<!-- Single Hero Slide -->
-    		<div class="single-hero-slide bg-img" style="background-image: url(<?php echo base_url() ?>includes/others/img/bg-img/hero2.jpg);">
+    		<div class="single-hero-slide height-600 bg-img" style="background-image: url(<?php echo base_url() ?>includes/others/img/bg-img/hero2.jpg);">
     			<div class="container h-100">
     				<div class="row h-100 align-items-center">
     					<div class="col-12">
@@ -56,7 +56,7 @@
     			</div>
     		</div>
     		<!-- Single Hero Slide -->
-    		<div class="single-hero-slide bg-img" style="background-image: url(<?php echo base_url() ?>includes/others/img/bg-img/hero3.jpg);">
+    		<div class="single-hero-slide height-600 bg-img" style="background-image: url(<?php echo base_url() ?>includes/others/img/bg-img/hero3.jpg);">
     			<div class="container h-100">
     				<div class="row h-100 align-items-center">
     					<div class="col-12">
@@ -74,7 +74,7 @@
     			</div>
     		</div>
     		<!-- Single Hero Slide -->
-    		<div class="single-hero-slide bg-img" style="background-image: url(<?php echo base_url() ?>includes/others/img/bg-img/hero4.jpg);">
+    		<div class="single-hero-slide height-600 bg-img" style="background-image: url(<?php echo base_url() ?>includes/others/img/bg-img/hero4.jpg);">
     			<div class="container h-100">
     				<div class="row h-100 align-items-center">
     					<div class="col-12">
@@ -91,7 +91,7 @@
     			</div>
     		</div>
     		<!-- Single Hero Slide -->
-    		<div class="single-hero-slide bg-img" style="background-image: url(<?php echo base_url() ?>includes/others/img/bg-img/hero5.jpg);">
+    		<div class="single-hero-slide height-600 bg-img" style="background-image: url(<?php echo base_url() ?>includes/others/img/bg-img/hero5.jpg);">
     			<div class="container h-100">
     				<div class="row h-100 align-items-center">
     					<div class="col-12">
@@ -127,4 +127,53 @@
 
    
 
-    
+    <footer class="footer-area" id="contact-us">
+        
+        <div class="main-footer-area section_padding_100 bg-default">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 footer-widget-area">
+                        <div class="widget-title">
+                                <h6>Opening Time</h6>
+                        </div>
+                        <div class="widget-single-contact d-flex align-items-center">
+                            <div class="widget-contact-thumbnail mr-15">
+                                <img src="<?php echo base_url() ?>includes/others/img/icons/alarm-clock.png" alt="">
+                            </div>
+                            <div class="widget-contact-info">
+                                <p>Monday - Friday 08:00 - 21:00 <br>Saturday &amp; Sunday - CLOSED</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 footer-widget-area">
+                        <div class="widget-title">
+                                <h6>Address</h6>
+                            </div>
+                        <div class="widget-single-contact d-flex align-items-center">
+                            <div class="widget-contact-thumbnail mr-15">
+                                <img src="<?php echo base_url() ?>includes/others/img/icons/map-pin.png" alt="">
+                            </div>
+                            <div class="widget-contact-info">
+                                <p>123 Street, City<br>Country</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 footer-widget-area">
+                        <div class="widget-title">
+                                <h6>Contact</h6>
+                            </div>
+                        <div class="widget-single-contact d-flex align-items-center">
+                            <div class="widget-contact-thumbnail mr-15">
+                                <img src="<?php echo base_url() ?>includes/others/img/icons/envelope.png" alt="">
+                            </div>
+                            <div class="widget-contact-info">
+                                <p>09123456789 <br>contact@business.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+    </footer>
