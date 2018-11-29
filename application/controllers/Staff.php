@@ -309,7 +309,7 @@ class Staff extends MY_Controller {
             
             $schedules = $this->db->where('date >=', date('Y-m-d'))
                             ->where('user_id', $doctor->id)
-                            ->order_by('id', 'DESC')
+                            ->order_by('id', 'asc')
                             ->get('tblschedule')
                             ->result();
             
@@ -419,7 +419,7 @@ class Staff extends MY_Controller {
      
         $schedule = $this->db->where('date >=', $date)
                             ->where('user_id', $this->input->post('id'))
-                            ->order_by('id', 'DESC')
+                            ->order_by('date', 'ASC')
                             ->get('tblschedule')
                             ->result();
         
@@ -434,6 +434,7 @@ class Staff extends MY_Controller {
             $start = Carbon\Carbon::parse($sched->start);
             $end = Carbon\Carbon::parse($sched->end);
             $diff = $start->diffInMinutes($end);
+
             $datasets[] = [
                     'available' => ($diff / 20) - $appointments,
                     'date' => $sched->date,
