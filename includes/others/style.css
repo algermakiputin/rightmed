@@ -8,6 +8,12 @@
     ---------------------------------------------------------- */
 
     /* ============ PLACE YOUR CUSTOM CSS HERE ============ */
+    .section_padding_100 {
+        padding: 60px 0;
+    }
+    .widget-title {
+        margin-bottom: 30px;
+    }
     table {
         width: 100% !important;
     }
@@ -76,7 +82,7 @@
 }
 
     .form-login {
-    	position: absolute;right: 50px;top: 38%;width: 100%;height: auto;z-index: 9999;
+    	position: absolute;right: 50px;top: 45%;width: 100%;height: auto;z-index: 9999;
         transform: translate(0,-50%);
         background: #fff;
         padding: 20px;
