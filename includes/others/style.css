@@ -11,6 +11,10 @@
     .section_padding_100 {
         padding: 60px 0;
     }
+
+    .medica-about-content.section_padding_100 {
+        padding: 100px 0;
+    }
     .widget-title {
         margin-bottom: 30px;
     }
