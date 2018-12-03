@@ -25,7 +25,7 @@ date_default_timezone_set("Asia/Manila");
 */
 
 if (SITE_LIVE == "localhost") {
-	$config['base_url'] = 'http://localhost/medtech';
+	$config['base_url'] = getenv('base_url');
 }
 else{
 	$config['base_url'] = 'https://rightmed.herokuapp.com/';

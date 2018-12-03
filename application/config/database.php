@@ -105,10 +105,10 @@ $db['local'] = array(
 
 $db['server'] = array(
 	'dsn'	=> '',
-	'hostname' => 'us-cdbr-iron-east-01.cleardb.net',
-	'username' => 'bc80acadab5f09',
-	'password' => '2b4538af',
-	'database' => 'heroku_0d774484ec697f1',
+	'hostname' => getenv('hostname'),
+	'username' => getenv('username'),
+	'password' => getenv('password'),
+	'database' => getenv('database'),
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
