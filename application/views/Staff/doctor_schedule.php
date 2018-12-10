@@ -42,12 +42,14 @@
                                 <td><?php echo $key ?></td>
                                 <td>
                                     
-                                    <?php if ($schedule): ?>
+                                    <?php if ($schedule[0]): ?>
                                         <?php foreach($schedule as $sched): ?>
                                                 <?php if ($sched): ?>
                                                 <div><?php echo ($sched['date']) ?? '' ?><button data-id="<?php echo $sched['id'] ?>" class="btn btn-link edit"><i class="fa fa-edit"></i>Edit</button></div> 
                                                 <?php endif; ?>
                                         <?php endforeach; ?>
+                                    <?php else: ?>
+                                        Schedule is not set
                                     <?php endif; ?>
                                     
                                 </td>

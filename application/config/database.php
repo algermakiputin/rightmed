@@ -71,7 +71,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | the query builder class.
 */
 
-if (SITE_LIVE == "localhost") {
+if (!SITE_LIVE) {
 	$active_group = 'local';
 } 
 else {
