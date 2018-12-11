@@ -12,12 +12,21 @@ class Doctor extends MY_Controller {
     }
 
     public function index() {
-
+   
         $this->load->model("stf");
 
         $doctor_id = $this->stf->select_users('', 'tbluser', '', $this->session->userid)[0]->id;
         $this->data['appointments'] = $this->stf->select_appointments($doctor_id, '= "Pending"');
 
+    }
+
+    public function setPrescription() {
+
+        $this->db->where("id", $this->input->post('appointment_id'))
+                    ->update('tblappointment', [
+                                'prescription' => $this->input->post('prescription')
+                            ]);
+        return redirect(base_url("Doctor/my_patients"));
     }
 
     public function edit_status($id, $state) {

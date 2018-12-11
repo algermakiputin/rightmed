@@ -22,7 +22,7 @@
         <div class="content mt-3">
             <section class='main-sec'>
                 <h1>Appointments</h1>
-
+ 
                 <table id="classes" class="table table-striped">
                     <thead>
                         <tr>

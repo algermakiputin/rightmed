@@ -59,8 +59,12 @@
                                     echo $appointment->medinfo;
 
                                 } else echo 'Pending medical request' ?>
-                                
+                                <br>
+                                <a class="prescription" href="#" data-id="<?php echo $appointment->id ?>" data-prescription="<?php echo $appointment->prescription ?>" data-row="<?php echo $inc ?>" data-toggle="modal" data-target="#prescription-modal">
+                                    <i class="menu-icon fa fa-medkit"></i> Set Prescription 
+                                </a>
                                 <br />
+                                
                                 <a class="set" href="#" data-id="<?php echo $appointment->id ?>" data-row="<?php echo $inc ?>" data-toggle="modal" data-target="#addeditmodal2">
                                     <i class="menu-icon fa fa-search"></i> Set diagnosis 
                                 </a>
@@ -99,7 +103,35 @@
             </section>
         </div> <!-- .content -->
     </div>
-
+    <div class="modal fade" id="prescription-modal" tabindex="-1" role="dialog" aria-labelledby="prescription-modal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form id="prescription-form" action="<?php echo base_url() . $usertype ?>/setPrescription" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addeditmodalLabel">Patient Prescription</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" class="d-none form-control" id="appointment_id" name="appointment_id">
+                                <div class="form-group" id="doctorgrp">
+                                    <label for="medinfo">Prescription</label>
+                                    <textarea  id="prescription" name="prescription" class="form-control" rows='10'></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <div class="modal fade" id="addeditmodal" tabindex="-1" role="dialog" aria-labelledby="addeditmodalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -232,5 +264,13 @@
                 }
             })
         });
+
+        jQuery(".prescription").click(function() {
+            var id = jQuery(this).data('id');
+            var prescription = jQuery(this).data('prescription');
+            jQuery("#appointment_id").val(id);
+            jQuery("[name='prescription']").val(prescription);
+
+        })
 
     </script> 

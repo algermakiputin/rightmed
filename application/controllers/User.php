@@ -65,7 +65,7 @@ class User extends MY_Controller {
 
             $userid = $user->row()->id;
             $usertype = $user->row()->usertype;
-
+            
             $this->session->set_userdata('userid', $userid);
             $this->session->set_userdata('username', $username);
             $this->session->set_userdata('usertype', $usertype);

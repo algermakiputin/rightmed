@@ -1,6 +1,19 @@
 jQuery(document).ready(function($) {
 	var base_url = $("meta[name='base_url']").attr('content');
-	
+	$(".notification").click(function(e) {
+		e.preventDefault();
+		var recipient = $(this).data("recipient");
+		$.ajax({
+			type : 'post',
+			data : {
+				id : recipient
+			},
+			url : base_url + 'NotificationController/viewed',
+			success : function(data) {
+				window.location.href = $(this).attr('href');
+			}
+		});
+	})
 	$("#schedules").on('click', '.edit', function(){
 		var id = $(this).data('id');
 		$("#addeditmodal").modal('toggle');

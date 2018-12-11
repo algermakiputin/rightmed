@@ -291,7 +291,7 @@ class Stf extends CI_model {
 
     function select_appointments($userid = '', $state = '', $req_medical = '', $patient_id = '', $id = '', $type=true) {
 
-        $this->db->select('tblappointment.id, doctor_id, patient_id, schedule_id, state, req_medical, medinfo, findings, type,
+        $this->db->select('tblappointment.id, doctor_id, patient_id, schedule_id, state, req_medical, medinfo, findings, type, prescription,
             (SELECT fname FROM tblperson JOIN tbluser ON tbluser.person_id = tblperson.id WHERE tbluser.id = doctor_id) as doctorfname,
 			            (SELECT mname FROM tblperson JOIN tbluser ON tbluser.person_id = tblperson.id WHERE tbluser.id = doctor_id) as doctormname,
             (SELECT lname FROM tblperson JOIN tbluser ON tbluser.person_id = tblperson.id WHERE tbluser.id = doctor_id) as doctorlname,

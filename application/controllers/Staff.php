@@ -63,7 +63,7 @@ class Staff extends MY_Controller {
         $id = $this->input->post("id2");
 
         $this->stf->delete_user($id);
-        redirect(base_url() . $this->data['user'] . '/users');
+        redirect(base_url() . $this->data['user']);
 
     }
 
@@ -401,7 +401,7 @@ class Staff extends MY_Controller {
 
     public function appointments() {
         
-      
+        
         $this->data['doctors'] = $this->stf->select_users('Doctor');
         $this->data['patients'] = $this->stf->select_users('Patient', 'tblpatient');
 
@@ -474,8 +474,15 @@ class Staff extends MY_Controller {
     public function add_appointment() {
 
         
-        if ($this->get_appointment_input())
+        if ($this->get_appointment_input()) {
+           
             $this->stf->insert_appointment($this->doctor_id, $this->patient_id, $this->schedule_id, $this->type);
+            $this->db->insert("notifications", [
+                    'recipient' => $this->doctor_id,
+                    'user' => $this->patient_id,
+                    'type' => 'appointment'
+                ]);
+        }
 
         redirect(base_url() . $this->data['user'] . '/appointments');
 

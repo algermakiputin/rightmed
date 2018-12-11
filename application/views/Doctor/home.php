@@ -31,6 +31,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php if ($appointments) : ?>
                         <?php 
                             $inc = 1;
                             foreach ($appointments as $appointment): 
@@ -68,6 +69,11 @@
                             $inc++;
                             endforeach; 
                         ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="3" class="text-center">No Appointments at the moment</td>
+                        </tr>
+                    <?php endif; ?>
                     </tbody>
                 </table>
 
